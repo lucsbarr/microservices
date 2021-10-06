@@ -1,4 +1,4 @@
-package br.com.telefonicatreinamento.productms.form;
+package br.com.telefonicatreinamento.productms.request;
 
 import java.math.BigDecimal;
 
@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 import br.com.telefonicatreinamento.productms.modelo.Product;
 import br.com.telefonicatreinamento.productms.repository.ProductRepository;
 
-public class ProductForm {
+public class ProductIn {
 
 	@NotNull @NotEmpty
 	private String name;
@@ -17,7 +17,7 @@ public class ProductForm {
 	@NotNull @NotEmpty
 	private String description;
 	
-	@NotNull @DecimalMin("0.00")
+	@NotNull @DecimalMin("0.01")
 	private BigDecimal price;
 
 	public String getName() {
@@ -46,6 +46,14 @@ public class ProductForm {
 
 	public Product converter() {
 		return new Product(name, description, price);
+	}
+	
+	public Product converter(Long _id, ProductIn productIn) {
+		return new Product(_id, productIn.name, productIn.description, productIn.price);
+	}
+	
+	public Product converter(Long _id) {
+		return new Product(_id);
 	}
 	
 	public Product atualizar(Long id, ProductRepository productRepository) {

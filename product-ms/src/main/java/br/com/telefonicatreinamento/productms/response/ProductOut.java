@@ -1,4 +1,4 @@
-package br.com.telefonicatreinamento.productms.dto;
+package br.com.telefonicatreinamento.productms.response;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -6,14 +6,14 @@ import java.util.stream.Collectors;
 
 import br.com.telefonicatreinamento.productms.modelo.Product;
 
-public class ProductDto {
+public class ProductOut {
 
 	private Long id;
 	private String name;
 	private String description;
 	private BigDecimal price;
 	
-	public ProductDto(Product product) {
+	public ProductOut(Product product) {
 		this.id = product.getId();
 		this.name = product.getName();
 		this.description = product.getDescription();
@@ -36,8 +36,8 @@ public class ProductDto {
 		return price;
 	}
 
-	public static List<ProductDto> converter(List<Product> products) {
-		return products.stream().map(ProductDto::new).collect(Collectors.toList());
+	public static List<ProductOut> converter(List<Product> products) {
+		return products.stream().map(ProductOut::new).collect(Collectors.toList());
 	}
 	
 }

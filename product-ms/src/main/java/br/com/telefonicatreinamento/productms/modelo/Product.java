@@ -19,13 +19,22 @@ public class Product {
 	public Product() {
 	}
 	
-	
+	public Product(Long _id) {
+		this.id = _id;
+	}
 
-	public Product(String name, String description, BigDecimal price) {
+	public Product(String _name, String _description, BigDecimal _price) {
 		super();
-		this.name = name;
-		this.description = description;
-		this.price = price;
+		this.name = _name;
+		this.description = _description;
+		this.price = _price;
+	}
+	
+	public Product(Long _id, String _name, String _description, BigDecimal _price) {
+		this.id = _id;
+		this.name = _name;
+		this.description = _description;
+		this.price = _price;
 	}
 
 	public Long getId() {
